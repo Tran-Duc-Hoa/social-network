@@ -1,0 +1,31 @@
+{
+  "name": "social-network",
+  "version": "1.0.0",
+  "description": "a small social network for developers",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tran-Duc-Hoa/social-network.git"
+  },
+  "author": "Tran-Duc-Hoa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tran-Duc-Hoa/social-network/issues"
+  },
+  "homepage": "https://github.com/Tran-Duc-Hoa/social-network#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.1",
+    "gravatar": "^1.8.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.6",
+    "request": "^2.88.2"
+  }
+}
