@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://tran-duc-hoa:thientaidh01@cluster0.ysuyv.mongodb.net/devConnector?retryWrites=true&w=majority"
+}
