@@ -1,3 +1,3 @@
 # social-network
 
-A easy social network use Node.js & Express
+An easy social network use Node.js & Express
