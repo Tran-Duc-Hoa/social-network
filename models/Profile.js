@@ -79,8 +79,9 @@ const profileSchema = new mongoose.Schema(
         },
     },
     {
+        collection: 'Profile',
         timestamps: true,
     }
 );
 
-module.exports = Profile = new mongoose.model('profile', profileSchema);
+module.exports = Profile = new mongoose.model('Profile', profileSchema);
