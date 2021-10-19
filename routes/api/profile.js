@@ -138,4 +138,76 @@ router.delete('/', auth, async (req, res) => {
     }
 });
 
+// @desc Update experience
+router.put(
+    '/experience',
+    [
+        auth,
+        [
+            check('title', 'Title is required').not().isEmpty(),
+            check('company', 'Company is required').not().isEmpty(),
+            check('from', 'From is required').not().isEmpty(),
+        ],
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        const { title, company, location, from, to, current, description } = req.body;
+
+        const newExperience = {
+            title,
+            location,
+            company,
+            current,
+            description,
+            to,
+            from,
+        };
+
+        try {
+            const profile = await Profile.findOne({ user: req.user.id });
+            if (!profile) {
+                return res.status(404).send('Profile with this user not found.');
+            }
+            profile.experience.unshift(newExperience);
+            await profile.save();
+            res.json(profile);
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).send('Server Error');
+        }
+    }
+);
+
+// @desc    Delete experience by experienceId
+router.delete('/experience/:experienceId', auth, async (req, res) => {
+    try {
+        const profile = await Profile.findOne({ user: req.user.id });
+        if (!profile) {
+            return res.status(404).json({ msg: 'Profile with this user not found.' });
+        }
+
+        console.log(typeof profile.experience[0].id);
+        // Get remove index
+        const removeIndex = profile.experience
+            .map((item) => item.id)
+            .indexOf(req.params.experienceId);
+
+        if (removeIndex === -1)
+            return res.status(404).json({ msg: 'Experience with this id not found.' });
+
+        profile.experience.splice(removeIndex, 1);
+
+        await profile.save();
+
+        res.json(profile);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 module.exports = router;
