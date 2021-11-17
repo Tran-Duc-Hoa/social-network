@@ -1,3 +1,6 @@
 {
-  "mongoURI": "mongodb+srv://tran-duc-hoa:thientaidh01@cluster0.ysuyv.mongodb.net/devConnector?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://tran-duc-hoa:thientaidh01@cluster0.ysuyv.mongodb.net/devConnector?retryWrites=true&w=majority",
+    "jwtSecret": "abcejojldfjlkje792dfd3bre475br2973hg3945br47",
+    "githubClientId": "eb9e2ffa440168e026e6",
+    "githubSecret": "168ceb8a1e74230fff5276011f5d29022fe1923d"
 }
