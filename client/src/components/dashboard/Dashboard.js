@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
+import DashboardAction from './DashboardAction';
 
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
     useEffect(() => {
@@ -19,7 +20,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
                 Welcome {user && user.name}
             </p>
             {profile !== null ? (
-                <Fragment>has</Fragment>
+                <DashboardAction />
             ) : (
                 <Fragment>
                     <p>You have not yet a profile, please add some info</p>
