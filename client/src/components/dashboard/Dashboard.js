@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
 import DashboardAction from './DashboardAction';
+import Experience from './Experience';
+import Education from './Education';
 
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
     useEffect(() => {
@@ -20,7 +22,11 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
                 Welcome {user && user.name}
             </p>
             {profile !== null ? (
-                <DashboardAction />
+                <Fragment>
+                    <DashboardAction />
+                    <Experience experience={profile.experience} />
+                    <Education education={profile.education} />
+                </Fragment>
             ) : (
                 <Fragment>
                     <p>You have not yet a profile, please add some info</p>
