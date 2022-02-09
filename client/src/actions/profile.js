@@ -9,7 +9,7 @@ import {
     GET_PROFILES,
     GET_REPOS,
 } from './types';
-
+axios.defaults.baseURL = 'http://localhost:3000';
 // Get current user profile
 export const getCurrentProfile = () => async (dispatch) => {
     try {
@@ -57,7 +57,7 @@ export const getProfiles = () => async (dispatch) => {
 // Get profile by ID
 export const getProfileById = (userId) => async (dispatch) => {
     try {
-        const res = await axios.get(`api/profile/${userId}`);
+        const res = await axios.get(`api/profile/user/${userId}`);
 
         dispatch({
             type: GET_PROFILE,
