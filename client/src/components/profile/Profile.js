@@ -7,6 +7,7 @@ import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
+import ProfileGithub from './ProfileGithub';
 import { getProfileById } from '../../actions/profile';
 
 const Profile = ({ match, getProfileById, profile: { profile, loading }, auth }) => {
@@ -16,7 +17,7 @@ const Profile = ({ match, getProfileById, profile: { profile, loading }, auth })
 
     return (
         <Fragment>
-            {profile === null || loading ? (
+            {!profile || loading ? (
                 <Spinner />
             ) : (
                 <Fragment>
@@ -31,7 +32,7 @@ const Profile = ({ match, getProfileById, profile: { profile, loading }, auth })
                             </Link>
                         )}
 
-                    <div class="profile-grid my-1">
+                    <div className="profile-grid my-1">
                         <ProfileTop profile={profile} />
                         <ProfileAbout profile={profile} />
                         <div className="profile-exp bg-white p-2">
@@ -58,6 +59,9 @@ const Profile = ({ match, getProfileById, profile: { profile, loading }, auth })
                                 <h4>No education credentials</h4>
                             )}
                         </div>
+                        {profile.githubUserName && (
+                            <ProfileGithub username={profile.githubUserName} />
+                        )}
                     </div>
                 </Fragment>
             )}

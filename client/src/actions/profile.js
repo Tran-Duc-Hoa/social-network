@@ -77,7 +77,7 @@ export const getProfileById = (userId) => async (dispatch) => {
 
 // Get github repos
 export const getGithubRepos = (username) => async (dispatch) => {
-    dispatch({ type: CLEAR_PROFILE });
+    // dispatch({ type: CLEAR_PROFILE });
 
     try {
         const res = await axios.get(`api/profile/github/${username}`);
@@ -87,14 +87,14 @@ export const getGithubRepos = (username) => async (dispatch) => {
             payload: res.data,
         });
 
-        dispatch(setAlert('Get profile success', 'success'));
+        dispatch(setAlert('Get repos success', 'success'));
     } catch (error) {
         dispatch({
             type: PROFILE_ERROR,
             payload: { msg: error.response.statusText, status: error.response.status },
         });
 
-        dispatch(setAlert('Get profile fail', 'danger'));
+        dispatch(setAlert('Get repos fail', 'danger'));
     }
 };
 
