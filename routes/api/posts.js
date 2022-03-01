@@ -90,7 +90,7 @@ router.delete('/:id', auth, async (req, res) => {
         }
 
         // Check user
-        if (post.user.toString() === req.user.id) {
+        if (post.user.toString() !== req.user.id) {
             return res.status(403).json({ msg: 'Forbidden - User does not have permission.' });
         }
         await Post.findByIdAndDelete(req.params.id);
