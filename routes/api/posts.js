@@ -11,13 +11,7 @@ const Profile = require('../../models/Profile');
 // @access Private
 router.post(
     '/',
-    [
-        auth,
-        [
-            check('text', 'text must be required').not().isEmpty(),
-            check('name', 'name must be required').not().isEmpty(),
-        ],
-    ],
+    [auth, [check('text', 'text must be required').not().isEmpty()]],
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
