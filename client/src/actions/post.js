@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST } from './types';
+import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST, GET_POST } from './types';
 import { setAlert } from './alert';
 
 // Get posts
@@ -9,6 +9,23 @@ export const getPosts = () => async (dispatch) => {
 
         dispatch({
             type: GET_POSTS,
+            payload: res.data,
+        });
+    } catch (error) {
+        dispatch({
+            type: POST_ERROR,
+            payload: { msg: error.response.statusText, status: error.response.status },
+        });
+    }
+};
+
+// Get post
+export const getPost = (id) => async (dispatch) => {
+    try {
+        const res = await axios.get(`/api/posts/${id}`);
+
+        dispatch({
+            type: GET_POST,
             payload: res.data,
         });
     } catch (error) {
