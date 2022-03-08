@@ -70,7 +70,7 @@ export default function post(state = initialState, action) {
                 ...state,
                 post: {
                     ...state.post,
-                    comments: state.post.comments.filter((comment) => comment !== payload),
+                    comments: state.post.comments.filter((comment) => comment._id !== payload),
                 },
                 loading: false,
             };
